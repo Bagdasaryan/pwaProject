@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Заголовок</title>
+    <script type="text/javascript">
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/pwa/sw.js')
+            .then(function(registration) {
+                console.log('Registration successful, scope is:', registration.scope);
+            })
+            .catch(function(error) {
+                console.log('Service worker registration failed, error:', error);
+            });
+        }
+    </script>
+    <link rel="manifest" href="/pwa/manifest.json">
+  </head>
+  <body>
+    "Hello World!"
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "short_name": "Hello Habr",
+    "name": "Hello Habr - PWA example",
+    "icons": [
+      {
+        "src": "/images/icon.jpg",
+        "type": "image/jpg",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/images/icon.jpg",
+        "type": "image/jpg",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/html/index.html",
+    "background_color": "#3367D6",
+    "display": "standalone",
+    "scope": "/habr-pwa/hello-habr/",
+    "theme_color": "#3367D6"
+  }
