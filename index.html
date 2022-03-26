@@ -6,6 +6,13 @@
     <link href="style.css" rel="stylesheet">
     <script src="index.js" defer></script>
     <link rel="manifest" href="manifest.webmanifest">
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('/pwaProject/sw.js')
+          .then(() => { console.log('Service Worker Registered'); });
+      }
+    </script>
   </head>
   <body>
     <img src="images/fox1.jpg" alt="a fox picture">
