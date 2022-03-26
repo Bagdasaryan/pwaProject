@@ -2,9 +2,9 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open('fox-store').then((cache) => cache.addAll([
       '/pwaProject/',
-      '/pwaProject/index.html',
-      '/pwaProject/index.js',
-      '/pwaProject/style.css',
+      // '/pwaProject/index.html',
+      // '/pwaProject/index.js',
+      // '/pwaProject/style.css',
       '/pwaProject/images/fox1.jpg',
       '/pwaProject/images/fox2.jpg',
       '/pwaProject/images/fox3.jpg',
