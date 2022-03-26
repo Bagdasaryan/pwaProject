@@ -1,51 +1,46 @@
-const images = ['fox1', 'fox2', 'fox3', 'fox4'];
-const imgElem = document.querySelector('img');
+var activity = document.querySelector('body');
+var exampleLink = document.createElement('button');
 
-function randomValueFromArray(array) {
-  const randomNo = Math.floor(Math.random() * array.length);
-  return array[randomNo];
+exampleLink.setAttribute('class', 'btn btn-primary');
+exampleLink.textContent = 'Button';
+
+// activity.appendChild(exampleLink);
+activity.appendChild(createCarousel());
+
+function createCarousel() {
+  var carouselDiv = document.createElement('div');
+  carouselDiv.setAttribute('class', 'carousel slide');
+  carouselDiv.setAttribute('data-ride', 'carousel');
+
+  // Carousel inner
+  var carouselInnerDiv = document.createElement('div');
+  carouselInnerDiv.setAttribute('class', 'carousel-inner');
+
+  // First image
+  var carouselItemDiv = document.createElement('div');
+  carouselItemDiv.setAttribute('class', 'carousel-item active');  
+  carouselInnerDiv.appendChild(carouselItemDiv);
+
+  var firstImage = document.createElement('img');
+  firstImage.setAttribute('class', 'd-block w-100');
+  firstImage.setAttribute('src', 'images/fox1.jpg');
+  firstImage.setAttribute('alt', 'first');
+  carouselItemDiv.appendChild(firstImage);
+
+  carouselDiv.appendChild(carouselInnerDiv);
+
+  // Second image
+  var carouselItemDiv2 = document.createElement('div');
+  carouselItemDiv2.setAttribute('class', 'carousel-item');
+  carouselInnerDiv.appendChild(carouselItemDiv2);
+
+  var secondImage = document.createElement('img');
+  secondImage.setAttribute('class', 'd-block w-100');
+  secondImage.setAttribute('src', 'images/fox2.jpg');
+  secondImage.setAttribute('alt', 'second');
+  carouselItemDiv2.appendChild(secondImage);
+
+  carouselDiv.appendChild(carouselInnerDiv);
+
+  return carouselDiv;
 }
-
-setInterval(() => {
-  const randomChoice = randomValueFromArray(images);
-  imgElem.src = `images/${randomChoice}.jpg`;
-}, 2000);
-
-// Register service worker to control making site work offline
-
-// if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker
-//     .register('/pwaProject/sw.js')
-//     .then(() => { console.log('Service Worker Registered'); });
-// }
-
-// Code to handle install prompt on desktop
-
-let deferredPrompt;
-const addBtn = document.querySelector('.add-button');
-addBtn.style.display = 'none';
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI to notify the user they can add to home screen
-  addBtn.style.display = 'block';
-
-  addBtn.addEventListener('click', () => {
-    // hide our user interface that shows our A2HS button
-    addBtn.style.display = 'none';
-    // Show the prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      } else {
-        console.log('User dismissed the A2HS prompt');
-      }
-      deferredPrompt = null;
-    });
-  });
-});
